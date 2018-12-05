@@ -9,6 +9,11 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+/**
+ * Usar o JDBC do spring caso as consultas com o hibernate estejam gargalando.
+ * @author André Luis
+ *
+ */
 @Component
 @Transactional(propagation = Propagation.REQUIRED , rollbackFor = Exception.class)
 public class SimpleJdbcclassImpl extends SimpleJdbcCall implements Serializable{

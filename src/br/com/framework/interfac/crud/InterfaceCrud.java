@@ -11,6 +11,12 @@ import org.springframework.jdbc.core.simple.SimpleJdbcTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+/**
+ * v : 4
+ * @author André Luis
+ *
+ * @param <T>
+ */
 @Component
 @Transactional
 public interface InterfaceCrud<T> extends Serializable{

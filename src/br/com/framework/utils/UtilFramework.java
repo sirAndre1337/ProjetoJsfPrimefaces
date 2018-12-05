@@ -5,6 +5,7 @@ import java.io.Serializable;
 import org.springframework.stereotype.Component;
 /**
  * Classe Responsavel por fazer o log do usuario que esta excluindo,inserindo ou editando no BD(Hibernate Envers)
+ * v : 10.
  * @author André Luis
  *
  */
