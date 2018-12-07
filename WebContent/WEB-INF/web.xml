@@ -29,6 +29,11 @@
   	<error-code>403</error-code>
   	<location>/error/AcessoNegado.jsf</location>
   </error-page>
+  <!-- 404: Não consegue encontra o endereço -->
+  <error-page>
+  	<error-code>404</error-code>
+  	<location>/error/404.jsf</location>
+  </error-page>
   <!-- 500: Error interno do servidor -->
    <error-page>
   	<error-code>500</error-code>
