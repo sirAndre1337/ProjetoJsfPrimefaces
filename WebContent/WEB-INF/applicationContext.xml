@@ -41,14 +41,14 @@
 		</property>
 	</bean>
 	
-	<bean id="flyway" class="org.flywaydb.core.Flyway" init-method="migrate" lazy-init="false">
-		<property name="dataSource" ref="springDataSource" />
-		<property name="baseLineOnMigrate" value="true" />
-		<property name="table" value="version" />
-		<property name="sqlMigrationPrefix" value="v" />
-		<property name="sqlMigrationSeparator" value="_" />
-		<property name="encoding" value="ISO-8859-1" />
-		<property name="validateOnMigration" value="true" />
+	<bean id="flyway" class="org.flywaydb.core.Flyway" init-method="migrate" lazy-init="false"> 
+    	<property name="dataSource" ref="springDataSource"/> 
+    	<property name="baselineOnMigrate" value="true"/>  
+    	<property name="table" value="version"/> 
+    	<property name="sqlMigrationPrefix" value="v"/> 
+    	<property name="sqlMigrationSeparator" value="_"/>
+    	<property name="encoding" value="ISO-8859-1"/>
+    	<property name="validateOnMigrate" value="false"/>
 	</bean>
 	
 	<bean id="transactionManager" name="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager" lazy-init="false">
