@@ -1,7 +1,6 @@
 package br.com.srv.implementacao;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import br.com.repository.interfaces.RepositoryLogin;
 import br.com.srv.interfaces.SvrLogin;
@@ -12,7 +11,6 @@ import br.com.srv.interfaces.SvrLogin;
  * @author André Luis
  *
  */
-@Service
 public class SrvLoginImpl implements SvrLogin{
 
 	private static final long serialVersionUID = 1L;
@@ -22,8 +20,7 @@ public class SrvLoginImpl implements SvrLogin{
 
 	@Override
 	public boolean autentico(String login, String senha) throws Exception {
-		repositoryLogin.autentico(login, senha);
-		return false;
+		return repositoryLogin.autentico(login, senha);
 	}
 
 }
