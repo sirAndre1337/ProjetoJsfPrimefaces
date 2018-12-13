@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 
 import br.com.project.bean.geral.BeanManagedViewAbstract;
 import br.com.project.geral.controller.CidadeController;
+import br.com.project.model.classes.Cidade;
 
 @Controller
 @Scope(value = "session")
@@ -16,9 +17,30 @@ public class CidadeBeanView extends BeanManagedViewAbstract{
 
 	private static final long serialVersionUID = 1L;
 	
+	private Cidade objetoSelecionado = new Cidade();
+	
 	@Autowired
 	private CidadeController cidadeController;
 	
+	@Override
+	public String save() throws Exception {
+		objetoSelecionado = cidadeController.merge(objetoSelecionado);
+		return "";
+	}
+	
+	@Override
+	public String novo() throws Exception {
+		objetoSelecionado = new Cidade();
+		return "";
+	}
+	
+	public void setObjetoSelecionado(Cidade objetoSelecionado) {
+		this.objetoSelecionado = objetoSelecionado;
+	}
+	
+	public Cidade getObjetoSelecionado() {
+		return objetoSelecionado;
+	}
 	
 
 }
