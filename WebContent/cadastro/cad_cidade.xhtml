@@ -15,7 +15,7 @@
 				<p:panel header="Cadastro de cidade" id="panelCadastro">
 					<h:panelGrid id="gridCidade" columns="3">
 						<h:outputLabel for="id" value="Código: " id="labelId" />
-						<p:inputText id="id" styleClass="estiloIdCastro" disabled="true" value="#{cidadeBeanView.objetoSelecionado.cid_codigo}"/>
+						<p:inputText id="id" styleClass="estiloIdCadastro" disabled="true" value="#{cidadeBeanView.objetoSelecionado.cid_codigo}"/>
 						<h:outputLabel />
 						
 						<h:outputLabel id="labelNomeConsultaCidade" for="cidadeNome" value="Nome* :" />
@@ -28,13 +28,63 @@
 						requiredMessage="Informe o estado." value="#{cidadeBeanView.objetoSelecionado.estado}">
 							<f:selectItems value="#{estadoBeanView.estados}"/>
 						</p:selectOneMenu>
+						<p:message for="estado"/>
 						
 					</h:panelGrid>	
 				</p:panel>
+					
+				<div class="espacoBranco"/>
 				
 				<p:commandButton value="Salvar" ajax="false" action="#{cidadeBeanView.save}"/>
 				<p:commandButton value="Novo" ajax="false" action="#{cidadeBeanView.novo}"/>
-			</h:form>	
+			</h:form>
+			
+			<script type="text/javascript" charset="UTF-8">
+				addFocoAoCampo("cidadeNome");
+				gerenciaTeclaEnter();
+			</script>
+			
+			<div class="espacoBranco"/>
+			
+			<p:dataTable id="tableResult" value="#{cidadeBeanView.cidades}" var="cidade"
+			 emptyMessage="Não existem valores para exibição.">
+				<p:column>
+					<center>
+						<f:facet name="header">Código</f:facet>
+						<h:outputText value="#{cidade.cid_codigo}" />
+					</center>
+				</p:column>
+				<p:column>
+					<center>
+						<f:facet name="header">Nome</f:facet>
+						<h:outputText value="#{cidade.cid_descricao}" />
+					</center>
+				</p:column>
+				<p:column>
+					<center>
+						<f:facet name="header">Estado</f:facet>
+						<h:outputText value="#{cidade.estado.est_nome}" />
+					</center>
+				</p:column>
+				<p:column>
+					<center>
+						<f:facet name="header">Editar</f:facet>
+						<p:commandLink value="Editar" ajax="true" immediate="true" action="#{cidadeBeanView.editar}" id="editarCidade">
+							<f:setPropertyActionListener value="#{cidade}" target="#{cidadeBeanView.objetoSelecionado}"/>
+						</p:commandLink>
+					</center>
+				</p:column>
+				<p:column>
+					<center>
+						<f:facet name="header">Excluir</f:facet>
+						<p:commandLink value="Excluir" ajax="false" immediate="true" 
+						action="#{cidadeBeanView.excluirCidade}" id="excluirCidade">
+							<f:setPropertyActionListener value="#{cidade}" target="#{cidadeBeanView.objetoSelecionado}"/>
+						</p:commandLink>
+					</center>
+				</p:column>
+			</p:dataTable>	
+			
 		</ui:define>
 	</ui:composition>
 </html>
