@@ -50,41 +50,9 @@
 			 emptyMessage="Não existem valores para exibição." rendered="true" rows="5"
 			  paginator="true" paginatorPosition="bottom"
 			  paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
-				<p:column>
-					<center>
-						<f:facet name="header">Código</f:facet>
-						<h:outputText value="#{cidade.cid_codigo}" />
-					</center>
-				</p:column>
-				<p:column>
-					<center>
-						<f:facet name="header">Nome</f:facet>
-						<h:outputText value="#{cidade.cid_descricao}" />
-					</center>
-				</p:column>
-				<p:column>
-					<center>
-						<f:facet name="header">Estado</f:facet>
-						<h:outputText value="#{cidade.estado.est_nome}" />
-					</center>
-				</p:column>
-				<p:column>
-					<center>
-						<f:facet name="header">Editar</f:facet>
-						<p:commandLink value="Editar" ajax="true" immediate="true" action="#{cidadeBeanView.editar}" id="editarCidade">
-							<f:setPropertyActionListener value="#{cidade}" target="#{cidadeBeanView.objetoSelecionado}"/>
-						</p:commandLink>
-					</center>
-				</p:column>
-				<p:column>
-					<center>
-						<f:facet name="header">Excluir</f:facet>
-						<p:commandLink value="Excluir" ajax="false" immediate="true" 
-						action="#{cidadeBeanView.excluirCidade}" id="excluirCidade">
-							<f:setPropertyActionListener value="#{cidade}" target="#{cidadeBeanView.objetoSelecionado}"/>
-						</p:commandLink>
-					</center>
-				</p:column>
+			  
+			  <ui:include src="/resources/components/colunasDataTableCidade.xhtml" />
+			  
 			</p:dataTable>	
 			
 		</ui:define>
