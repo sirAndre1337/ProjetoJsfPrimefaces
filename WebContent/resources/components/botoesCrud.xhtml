@@ -13,6 +13,7 @@
 		<composite:attribute name="managedBeanView" required="true"/>
 		<composite:attribute name="botaoNovo" required="false" default="true" />
 		<composite:attribute name="camposReload" required="false"/>
+		<composite:attribute name="botaoSalvar" required="false" default="true"/>
 	</composite:interface>
 	
 	
@@ -24,6 +25,17 @@
 		ajax="false"
 		id="buttonNovo"
 		update="#{cc.attrs.camposReload}"/> <!-- rendered ta fazendo referencia ao composite atribute default = true (entao ele aparece) - linha 14 --> <!-- cc.attrs aponta para o composite atributo name -->
+		
+		<p:commandButton value="Salvar" style="height:40px; width:100px;background:#CDCDC1;border:1px solid #FFFFFF;"
+		rendered="#{cc.attrs.botaoSalvar}"
+		actionListener="#{cc.attrs.managedBeanView.saveNotReturn}"
+		ajax="false"
+		partialSubmit="true"
+		process="@this, @form"
+		id="buttonSalvar"
+		immediate="false"
+		update="#{cc.attrs.camposReload}"
+		/>
 	</composite:implementation>
 	
 <!-- 	<p:commandButton value="Salvar" ajax="false" action="#{cidadeBeanView.save}"/> -->
