@@ -1,0 +1,33 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:sec="http://www.springframework.org/security/facelets/tags"
+	xmlns:util="http://java.sun.com/jsf/composite/components"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:composite="http://java.sun.com/jsf/composite">
+	
+	
+	<composite:interface name="botoesCrud">
+		<composite:attribute name="managedBeanView" required="true"/>
+		<composite:attribute name="botaoNovo" required="false" default="true" />
+		<composite:attribute name="camposReload" required="false"/>
+	</composite:interface>
+	
+	
+	<composite:implementation>
+		<p:commandButton value="Novo"  style="height:40px; width:100px;background:#CDCDC1;border:1px solid #FFFFFF;"
+		rendered="#{cc.attrs.botaoNovo}"
+		action="#{cc.attrs.managedBeanView.novo}" 
+		immediate="true"
+		ajax="false"
+		id="buttonNovo"
+		update="#{cc.attrs.camposReload}"/> <!-- rendered ta fazendo referencia ao composite atribute default = true (entao ele aparece) - linha 14 --> <!-- cc.attrs aponta para o composite atributo name -->
+	</composite:implementation>
+	
+<!-- 	<p:commandButton value="Salvar" ajax="false" action="#{cidadeBeanView.save}"/> -->
+<!-- 	<p:commandButton value="Novo" ajax="false" action="#{cidadeBeanView.novo}" immediate="true"/> -->
+	
+	
+</html>

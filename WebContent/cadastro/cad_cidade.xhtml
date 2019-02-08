@@ -35,8 +35,12 @@
 					
 				<div class="espacoBranco"/>
 				
-				<p:commandButton value="Salvar" ajax="false" action="#{cidadeBeanView.save}"/>
-				<p:commandButton value="Novo" ajax="false" action="#{cidadeBeanView.novo}" immediate="true"/>
+				<util:botoesCrud managedBeanView="#{cidadeBeanView}" 
+								 camposReload=":formTemplate:msg, tableResult" 
+								 botaoNovo="#{contextoBean.possuiAcesso('CIDADE_NOVO', 'ADMIN')}">
+				
+				</util:botoesCrud>
+				
 			</h:form>
 			
 			<script type="text/javascript" charset="UTF-8">
